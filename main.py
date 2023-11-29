@@ -1,14 +1,18 @@
 from flask import Flask, render_template
 
-app = Flask(__name__, template_folder='practice')
+app = Flask(__name__, template_folder='templates')
 
 #connect html page
-@app.route("/home")
+@app.route("/")
 def home():
-    return render_template("practice.html")
+    return render_template("home.html")
 
-@app.route("/about")
-def about():
-    return render_template("about.html")
+@app.route("/api/v1/<station>/<date>")
+def about(station, date):
+    temperature = 23
+    return {"station": station,
+            "date": date,
+            "temperature": 23}
 
-app.run(debug=True)
+if __name__ == "__main_-":
+    app.run(debug=True)
